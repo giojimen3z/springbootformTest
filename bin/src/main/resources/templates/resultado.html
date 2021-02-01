@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--/*@thymesVar id="titulo" type="java.lang.String"*/-->
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+<!--/*@thymesVar id="titulo" type="java.lang.String"*/-->
+<H3 th:text="${titulo}"></H3>
+
+<ul>
+    <!--/*@thymesVar id="username" type="java.lang.String"*/-->
+    <li th:text="${username}"></li>
+    <!--/*@thymesVar id="password" type="java.lang.String"*/-->
+    <li th:text="${password}"></li>
+    <!--/*@thymesVar id="email" type="java.lang.String"*/-->
+    <li th:text="${email}"></li>
+</ul>
+</body>
+
+</html>
