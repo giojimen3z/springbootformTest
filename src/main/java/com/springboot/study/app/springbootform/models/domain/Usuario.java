@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -13,7 +14,7 @@ public class Usuario {
 
   private String id;
 
-  @NotEmpty() private String nombre;
+  private String nombre;
 
   @NotEmpty private String apellido;
 
