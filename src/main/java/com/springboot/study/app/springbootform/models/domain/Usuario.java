@@ -1,28 +1,38 @@
 package com.springboot.study.app.springbootform.models.domain;
 
+import com.springboot.study.app.springbootform.utils.anotations.IdentificadorRegex;
+import com.springboot.study.app.springbootform.utils.anotations.Requerido;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
+import java.util.Date;
 
 @Getter
 @Setter
 public class Usuario {
 
-  private String id;
+  @IdentificadorRegex private String id;
 
   private String nombre;
 
-  @NotEmpty private String apellido;
+  @Requerido private String apellido;
 
-  @NotEmpty
+  @NotBlank
   @Size(min = 3, max = 8)
   private String username;
 
   @NotEmpty private String password;
 
   @Email() @NotEmpty private String email;
+
+  @NotNull
+  @Min(5)
+  @Max(5000)
+  private Integer cuenta;
+
+  @NotNull
+  @Future
+  private Date fechaNacimiento;
 }

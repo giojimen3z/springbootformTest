@@ -3,14 +3,18 @@ package com.springboot.study.app.springbootform.controllers;
 import com.springboot.study.app.springbootform.models.domain.Usuario;
 import com.springboot.study.app.springbootform.validations.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.naming.Binding;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +23,14 @@ import java.util.Map;
 public class FormController {
 
   @Autowired private UsuarioValidador validador;
+
+  @InitBinder
+  public void initBinder(WebDataBinder binder) {
+    binder.addValidators(validador);
+    SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+    dateformat.setLenient(false);
+    binder.registerCustomEditor(Date.class,"fechaNacimiento", new CustomDateEditor(dateformat, false));
+  }
 
   @GetMapping("/form")
   public String form(Model model) {
@@ -34,7 +46,7 @@ public class FormController {
   @PostMapping("/form")
   public String procesar(
       @Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
-    validador.validate(usuario, result);
+
     model.addAttribute("titulo", "Resultado del form");
     if (result.hasErrors()) {
       return "form";
