@@ -81,7 +81,7 @@ public class FormController {
     Usuario usuario = new Usuario();
     usuario.setNombre("gio");
     usuario.setApellido("perez");
-    usuario.setId("1234564654k");
+    usuario.setId("12.123.123-G");
     usuario.setHabilitar(true);
     usuario.setValorSecreto("algun valor secreto ****");
     usuario.setPais(new Pais(1, "COL", "Colombia"));

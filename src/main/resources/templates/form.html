@@ -8,7 +8,7 @@
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-
+<section th:replace="componentes/tiempo :: interceptor"></section>
 <H3 th:text="${titulo}"></H3>
 <div class="container">
     <form th:action="@{/form}" th:object="${usuario}" method="post">
@@ -23,7 +23,8 @@
             <label class="col-form-label col-sm-2">Genero</label>
             <div th:each="gen: ${genero}" class="row col-sm-2">
                 <input type="radio" th:field="*{genero}" th:value="${gen}" class="form-control col-sm-2">
-                <label th:for="${#ids.prev('genero')}" th:text="${gen}" class="col-form-label col-form-label col-sm-2"></label>
+                <label th:for="${#ids.prev('genero')}" th:text="${gen}"
+                       class="col-form-label col-form-label col-sm-2"></label>
             </div>
             <div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="alert alert-danger"></div>
         </div>
@@ -82,7 +83,8 @@
                 <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="yyyy/MM/dd"
                        class="form-control">
             </div>
-            <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" class="alert alert-danger"></div>
+            <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"
+                 class="alert alert-danger"></div>
         </div>
         <div class="form-gruop row">
             <label for="pais.codigo" class="col-form-label col-sm-2">Pais</label>
